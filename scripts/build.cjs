@@ -1,0 +1,14 @@
+const fs=require('node:fs');const path=require('node:path');const {createHash}=require('node:crypto');
+const digest=text=>createHash('sha256').update(text).digest('hex').slice(0,12);
+const out=path.resolve('_site');fs.rmSync(out,{recursive:true,force:true});fs.mkdirSync(path.join(out,'assets'),{recursive:true});
+const css=fs.readFileSync('web/app.css','utf8'),js=fs.readFileSync('web/app.js','utf8');
+const cssFile=`assets/app.${digest(css)}.css`,jsFile=`assets/app.${digest(js)}.js`;
+fs.writeFileSync(path.join(out,cssFile),css);fs.writeFileSync(path.join(out,jsFile),js);
+fs.writeFileSync(path.join(out,'index.html'),fs.readFileSync('web/index.html','utf8').replace('__CSS__','./'+cssFile).replace('__JS__','./'+jsFile));
+for(const name of ['manifest.webmanifest','icon.svg','apple-touch-icon.png'])fs.copyFileSync('web/'+name,path.join(out,name));
+fs.writeFileSync(path.join(out,'.nojekyll'),'');
+if(fs.existsSync('README.md'))fs.copyFileSync('README.md',path.join(out,'README.md'));
+if(fs.existsSync('.data'))fs.cpSync('.data',path.join(out,'data'),{recursive:true});
+const shell=['./','./index.html','./'+cssFile,'./'+jsFile,'./manifest.webmanifest','./icon.svg','./apple-touch-icon.png'];
+fs.writeFileSync(path.join(out,'sw.js'),fs.readFileSync('web/sw.js','utf8').replace('__VERSION__',digest(css+js+fs.readFileSync('web/index.html','utf8'))).replace('__SHELL__',JSON.stringify(shell)));
+console.log('Built _site with hashed browser assets. Live data must be generated with npm run refresh.');
