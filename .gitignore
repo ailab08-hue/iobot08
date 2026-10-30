@@ -1,0 +1,9 @@
+node_modules/
+.build/
+.data/
+_site/
+.env*
+.firebase/
+.DS_Store
+firebase-debug*.log
+calendar-audit.json
