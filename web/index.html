@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="apple-touch-icon" href="./apple-touch-icon.png"><meta name="apple-mobile-web-app-capable" content="yes"><link rel="manifest" href="./manifest.webmanifest"><meta name="theme-color" content="#b60925">
+  <title>ʻIobot · School Schedule</title>
+  <link rel="stylesheet" href="__CSS__">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to schedule</a>
+  <header><div class="wrap"><div class="brand">ʻio<span>bot.</span></div><div class="small">ʻIOLANI SCHOOL · HONOLULU <span id="clock"></span></div></div></header>
+  <main id="main" class="wrap">
+    <section class="hero" aria-label="Selected school day">
+      <div><p class="eyebrow">Your school day, at a glance</p><h1 id="rotation">Checking…</h1><p id="date-title" class="date-title"></p><p class="small">Official period times · One shared schedule</p></div>
+      <div class="live"><div id="live-label" class="eyebrow">Live schedule</div><h2 id="live-name">Checking official times…</h2><div id="countdown" class="timer">—</div><p id="live-detail">Times use Hawaiʻi Standard Time.</p></div>
+    </section>
+    <div class="toolbar">
+      <button id="previous" aria-label="Previous day">←</button><button id="today">Today</button><button id="next" aria-label="Next day">→</button>
+      <label for="date">Choose date</label><input id="date" type="date"><button class="red" id="refresh">Refresh</button>
+    </div>
+    <nav id="week" class="week" aria-label="Choose a day this week"></nav>
+    <p id="error" class="error" role="alert" hidden></p>
+    <section class="panel" aria-labelledby="lunch-title">
+      <div class="section-head"><h2 id="lunch-title">Lunch</h2><a href="https://www.iolani.org/uploaded/PDF/DAILY_BULLETIN.pdf" target="_blank" rel="noopener noreferrer">Read Daily Bulletin ↗</a></div>
+      <div id="lunch" aria-live="polite">Checking the latest bulletin…</div><p id="lunch-status" class="status"></p>
+    </section>
+    <section class="panel" aria-labelledby="period-title"><div class="section-head"><h2 id="period-title">Periods</h2><span id="sync-status" class="small" role="status"></span></div><div id="periods"></div></section>
+    <section class="panel" aria-labelledby="notice-title"><h2 id="notice-title">Day details</h2><div id="notices"></div></section>
+    <footer><a id="source-link" hidden target="_blank" rel="noopener noreferrer">Public source &amp; README</a> · <a href="./README.md">Project guide</a><br>Independent AI-assisted student project. School sources remain authoritative. <a href="https://www.iolani.org/uploaded/PDF/Year_at_a_Glance_2026-27.pdf" target="_blank" rel="noopener noreferrer">2026–27 year-at-a-glance</a> supplements exam and summer dates. Menus appear only for the date printed in the bulletin.</footer>
+  </main>
+  <script src="__JS__" defer></script>
+</body>
+</html>

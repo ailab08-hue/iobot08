@@ -1,0 +1,17 @@
+{
+  "name": "Iobot School Schedule",
+  "short_name": "Iobot",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "theme_color": "#b60925",
+  "background_color": "#f4f4f4",
+  "icons": [
+    {
+      "src": "./icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
